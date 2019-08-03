@@ -16,6 +16,8 @@ class BATTLETANK_API ATankPlayerController : public APlayerController
 	GENERATED_BODY()
 
 private:
+	
+
 
 protected:
 	// Called when the game starts or when spawned
@@ -28,5 +30,8 @@ public:
 	
 	// Start the tank moving the barrell towards to where the crosshair points in the world
 	void AimTowardsCrosshair();
+
+	//return an OUT Parameter, true if hit landscape
+	bool GetSightRayHitLocation(FVector& HitLocation) const;
 	
 };
