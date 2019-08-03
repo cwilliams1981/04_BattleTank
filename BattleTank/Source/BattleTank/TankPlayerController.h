@@ -15,19 +15,22 @@ class BATTLETANK_API ATankPlayerController : public APlayerController
 {
 	GENERATED_BODY()
 
-private:
-	
-
+public:
+	virtual void Tick(float DeltaTime) override;
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:
+private:
+	UPROPERTY(EditAnywhere, Category = "Screen Crosshair")
+		float CrossHairXLocation = 0.5;
+
+	UPROPERTY(EditAnywhere, Category = "Screen Crosshair")
+		float CrossHairYLocation = 0.33333;
+	
 	ATank* GetControlledTank() const;
 
-	virtual void Tick(float DeltaTime) override;
-	
 	// Start the tank moving the barrell towards to where the crosshair points in the world
 	void AimTowardsCrosshair();
 
