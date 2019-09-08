@@ -1,11 +1,12 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "TankAimingComponent.h"
+
 #include "TankBarrel.h"
 #include "GameFramework/Pawn.h"
 #include "Components/StaticMeshComponent.h"
 #include "Runtime/Engine/Classes/Kismet/GameplayStatics.h"
 #include "Engine/World.h"
+#include "TankAimingComponent.h"
 
 
 // Sets default values for this component's properties
@@ -41,9 +42,12 @@ void UTankAimingComponent::TankAim(FVector HitLocation, float LaunchSpeed)
 		StartLocation,
 		HitLocation,
 		LaunchSpeed,
+		false,
+		0,
+		0,
 		ESuggestProjVelocityTraceOption::DoNotTrace
 	);
-	if (bHaveAimSolution)
+	if ((bHaveAimSolution) && (HitLocation!=FVector(0)))
 	{
 		auto AimDirection = OutLaunchVelocity.GetSafeNormal();
 		MoveBarrelTowards(AimDirection);
