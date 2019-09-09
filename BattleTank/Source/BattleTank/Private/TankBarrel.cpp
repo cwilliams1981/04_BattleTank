@@ -1,14 +1,13 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "Engine/World.h"
 #include "TankBarrel.h"
-
+#include "Engine/World.h"
 
 void UTankBarrel::Elevate(float RelativeSpeed) 
 {
 
-	// Rotate barrel
+	// Elevate barrel
 	// Given a max elevation speed, and the frame time
 
 	RelativeSpeed = FMath::Clamp<float>(RelativeSpeed, -1, 1);
