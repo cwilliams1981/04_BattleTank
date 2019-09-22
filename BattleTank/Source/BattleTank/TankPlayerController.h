@@ -24,13 +24,13 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
-	UPROPERTY(EditAnywhere, Category = "Screen Crosshair")
+	UPROPERTY(EditDefaultsOnly, Category = "Screen Crosshair")
 		float CrossHairXLocation = 0.5;
 
-	UPROPERTY(EditAnywhere, Category = "Screen Crosshair")
+	UPROPERTY(EditDefaultsOnly, Category = "Screen Crosshair")
 		float CrossHairYLocation = 0.33333;
 
-	UPROPERTY(EditAnywhere, Category = "Trace Range")
+	UPROPERTY(EditDefaultsOnly, Category = "Trace Range")
 		float LineTraceRange = 1000000.0f; // Maximum range of Tank view for line trace.
 	
 	ATank* GetControlledTank() const;
