@@ -5,6 +5,7 @@
 #include "Engine/World.h"
 #include "Public/Tank.h"
 
+
 void ATankAIController::BeginPlay()
 {
 	Super::BeginPlay();
@@ -20,9 +21,10 @@ void ATankAIController::Tick(float DeltaTime)
 	
 	if (PlayerTank)
 	{
-		// TODO Move towards the player
+		// Move towards the player
+		MoveToActor(PlayerTank, AcceptanceRadius); // TODO verify distance is cm.
 
-		//Aim towards the player
+		// Aim towards the player
 		ControlledTank->AimAt(PlayerTank->GetActorLocation());
 		ControlledTank->Fire();
 	}

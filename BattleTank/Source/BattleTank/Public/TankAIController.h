@@ -21,13 +21,12 @@ public:
 
 private:
 
+	// How close can the AI tank get to the player
+	//UFUNCTION(BlueprintCallable, Category = Setup)
+	float AcceptanceRadius = 3000;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-
-
-
-	
-	
 };

@@ -10,6 +10,11 @@ void UTankMovementComponent::Initialize(UTankTrack* LeftTrackToSet, UTankTrack* 
 	RightTrack = RightTrackToSet;
 }
 
+void UTankMovementComponent::RequestDirectMove(const FVector& MoveVelocity, bool bForceMaxSpeed)
+{
+	auto TankName = GetOwner()->GetName();
+	UE_LOG(LogTemp, Warning, TEXT("%s moving to: %s"), *TankName, *MoveVelocity.ToString())
+}
 
 void UTankMovementComponent::IntendMoveForward(float Throw) 
 {
