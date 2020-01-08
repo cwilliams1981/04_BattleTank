@@ -23,6 +23,9 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	UFUNCTION(BlueprintCallable, Category = "Setup")
+		ATank* GetControlledTank() const;
+
 private:
 	UPROPERTY(EditDefaultsOnly, Category = "Screen Crosshair")
 		float CrossHairXLocation = 0.5;
@@ -32,8 +35,6 @@ private:
 
 	UPROPERTY(EditDefaultsOnly, Category = "Trace Range")
 		float LineTraceRange = 1000000.0f; // Maximum range of Tank view for line trace.
-	
-	ATank* GetControlledTank() const;
 
 	// Start the tank moving the barrell towards to where the crosshair points in the world
 	void AimTowardsCrosshair();
