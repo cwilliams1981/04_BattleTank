@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright cwil
 
 #include "TankMovementComponent.h"
 #include "TankTrack.h"
@@ -12,7 +12,6 @@ void UTankMovementComponent::Initialize(UTankTrack* LeftTrackToSet, UTankTrack* 
 
 void UTankMovementComponent::RequestDirectMove(const FVector& MoveVelocity, bool bForceMaxSpeed)
 {
-	// auto TankName = GetOwner()->GetName();
 	auto TankForward = GetOwner()->GetActorForwardVector().GetSafeNormal();
 	auto AIForwardIntention = MoveVelocity.GetSafeNormal();
 
@@ -21,7 +20,6 @@ void UTankMovementComponent::RequestDirectMove(const FVector& MoveVelocity, bool
 
 	auto RightThrow = FVector::CrossProduct(TankForward, AIForwardIntention).Z;
 	IntendTurnRight(RightThrow);
-	// UE_LOG(LogTemp, Warning, TEXT("%s moving to: %s"), *TankName, *AIForwardIntention.ToString())
 }
 
 void UTankMovementComponent::IntendMoveForward(float Throw) 
