@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright cwil
 
 #pragma once
 
@@ -7,9 +7,10 @@
 #include "TankPlayerController.generated.h"
 
 class ATank;
+class UTankAimingComponent;
 
 /**
- * 
+ * Responsible for helping the player aim
  */
 UCLASS()
 class BATTLETANK_API ATankPlayerController : public APlayerController
@@ -24,17 +25,20 @@ protected:
 	virtual void BeginPlay() override;
 
 	UFUNCTION(BlueprintCallable, Category = "Setup")
-		ATank* GetControlledTank() const;
+	ATank* GetControlledTank() const;
+
+	UFUNCTION(BlueprintImplementableEvent, Category = "Setup")
+	void FoundAimingComponent(UTankAimingComponent* AimCompRef);
 
 private:
 	UPROPERTY(EditDefaultsOnly, Category = "Screen Crosshair")
-		float CrossHairXLocation = 0.5;
+	float CrossHairXLocation = 0.5;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Screen Crosshair")
-		float CrossHairYLocation = 0.33333;
+	float CrossHairYLocation = 0.33333;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Trace Range")
-		float LineTraceRange = 1000000.0f; // Maximum range of Tank view for line trace.
+	float LineTraceRange = 1000000.0f; // Maximum range of Tank view for line trace.
 
 	// Start the tank moving the barrell towards to where the crosshair points in the world
 	void AimTowardsCrosshair();
