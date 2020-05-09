@@ -8,7 +8,6 @@
 #include "Tank.generated.h"
 
 class UTankBarrel;
-class UTankTurret;
 class UTankAimingComponent;
 class AProjectile;
 
