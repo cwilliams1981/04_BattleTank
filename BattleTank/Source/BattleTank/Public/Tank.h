@@ -20,14 +20,11 @@ public:
 	UFUNCTION(BlueprintCallable, Category = Firing)
 	void Fire();
 	
-	void AimAt(FVector HitLocation);
+	//void AimAt(FVector HitLocation);
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-
-	UPROPERTY(BlueprintReadOnly)
-	UTankAimingComponent* TankAimingComponent = nullptr;
 
 private:
 	// Sets default values for this pawn's properties
