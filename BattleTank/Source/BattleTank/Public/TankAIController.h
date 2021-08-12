@@ -17,16 +17,18 @@ class BATTLETANK_API ATankAIController : public AAIController
 	GENERATED_BODY()
 	
 public:
-	virtual void Tick(float DeltaTime) override;
+
 
 private:
 
-	// How close can the AI tank get to the player
-	//UFUNCTION(BlueprintCallable, Category = Setup)
-	float AcceptanceRadius = 3000;
+	virtual void Tick(float DeltaTime) override;
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+	// How close can the AI tank get to the player
+	UPROPERTY(EditDefaultsOnly, Category = "Setup")
+	float AcceptanceRadius = 8000;
 
 };
