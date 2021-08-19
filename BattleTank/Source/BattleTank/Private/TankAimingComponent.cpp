@@ -36,7 +36,7 @@ void UTankAimingComponent::Initialize(UTankBarrel* BarrelToSet, UTankTurret* Tur
 
 void UTankAimingComponent::TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction)
 {
-	if (MortarsLeft == 0)
+	if (MortarsLeft <= 0)
 	{
 		FiringState = EFiringState::OutofAmmo;
 	}
@@ -55,7 +55,7 @@ void UTankAimingComponent::TickComponent(float DeltaTime, enum ELevelTick TickTy
 	// TODO Handle aiming and locked states
 }
 
-int UTankAimingComponent::GetMortarsLeft() const
+int32 UTankAimingComponent::GetMortarsLeft() const
 {
 	return MortarsLeft;
 }

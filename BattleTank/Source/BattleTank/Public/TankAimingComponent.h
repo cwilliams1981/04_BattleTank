@@ -45,7 +45,7 @@ public:
 	EFiringState GetFiringState() const;
 
 	UFUNCTION(BlueprintCallable, Category = "Firing")
-	int GetMortarsLeft() const;
+	int32 GetMortarsLeft() const;
 
 protected:
 	UPROPERTY(BlueprintReadOnly, Category = "State")
@@ -75,9 +75,10 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 	float ReloadTimeInSeconds = 3;
 
+	UPROPERTY(EditDefaultsOnly, Category = "Firing")
+	int32 MortarsLeft = 3;
+
 	double LastFireTime = 0;
 
 	FVector AimDirection;
-
-	int MortarsLeft = 3;
 };
