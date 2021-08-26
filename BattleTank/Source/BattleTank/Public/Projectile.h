@@ -29,6 +29,9 @@ public:
 
 	void LaunchProjectile(float Speed);
 
+	UPROPERTY(EditDefaultsOnly, Category = "Setup")
+	float ProjectileDamage = 20.0f;
+
 private:
 
 	UProjectileMovementComponent* ProjectileMovement = nullptr;
@@ -45,7 +48,7 @@ private:
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	URadialForceComponent* ExplosionForce = nullptr;
 
-	UPROPERTY(EditDefaultsOnly, Category = "Projectile Options")
+	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 	float DestroyDelay = 10.0f;
 
 	UFUNCTION()
