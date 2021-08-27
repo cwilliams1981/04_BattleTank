@@ -23,6 +23,11 @@ private:
 
 	virtual void Tick(float DeltaTime) override;
 
+	virtual void SetPawn(APawn* InPawn) override;
+
+	UFUNCTION()
+	void OnTankDeath();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

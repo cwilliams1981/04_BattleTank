@@ -19,6 +19,9 @@ class BATTLETANK_API ATankPlayerController : public APlayerController
 public:
 	virtual void Tick(float DeltaTime) override;
 
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FTankDelegate);
+	FTankDelegate TankDeathNotify;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -27,6 +30,15 @@ protected:
 	void FoundAimingComponent(UTankAimingComponent* AimCompRef);
 
 private:
+
+	virtual void SetPawn(APawn* InPawn) override;
+
+	// Start the tank moving the barrell towards to where the crosshair points in the world
+	void AimTowardsCrosshair();
+
+	UFUNCTION()
+	void OnTankDeath();
+
 	UPROPERTY(EditDefaultsOnly, Category = "Screen Crosshair")
 	float CrossHairXLocation = 0.5;
 
@@ -35,9 +47,6 @@ private:
 
 	UPROPERTY(EditDefaultsOnly, Category = "Trace Range")
 	float LineTraceRange = 1000000.0f; // Maximum range of Tank view for line trace.
-
-	// Start the tank moving the barrell towards to where the crosshair points in the world
-	void AimTowardsCrosshair();
 
 	// Return an OUT Parameter, true if hit landscape
 	bool GetSightRayHitLocation(FVector& HitLocation) const;

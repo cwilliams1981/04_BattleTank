@@ -29,7 +29,8 @@ float ATank::TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEve
 
 	if (CurrentHealth <= 0)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("GameOver!!!"));
+		//UE_LOG(LogTemp, Warning, TEXT("GameOver!!!"));
+		TankDeathNotify.Broadcast();
 	}
 
 	return DamageToApply;

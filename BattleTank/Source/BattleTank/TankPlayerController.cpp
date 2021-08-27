@@ -4,6 +4,7 @@
 
 #include "TankPlayerController.h"
 #include "Engine/World.h"
+#include "Tank.h"
 #include "TankAimingComponent.h"
 
 void ATankPlayerController::BeginPlay()
@@ -22,6 +23,20 @@ void ATankPlayerController::Tick(float DeltaTime)
 
 }
 
+void ATankPlayerController::SetPawn(APawn* InPawn)
+{
+	Super::SetPawn(InPawn);
+	if (InPawn)
+	{
+		auto PossessedTank = Cast<ATank>(InPawn);
+		if (!ensure(PossessedTank)) { return; }
+
+		// TODO Subscribe our local method to the tank's death event
+		PossessedTank->TankDeathNotify.AddUniqueDynamic(this, &ATankPlayerController::OnTankDeath);
+	}
+}
+
+
 void ATankPlayerController::AimTowardsCrosshair()
 {
 	if (!GetPawn()) { return; } // if not possessing
@@ -34,6 +49,11 @@ void ATankPlayerController::AimTowardsCrosshair()
 	{
 		AimingComponent->AimAt(HitLocation);
 	}
+}
+
+void ATankPlayerController::OnTankDeath()
+{
+	UE_LOG(LogTemp, Warning, TEXT("Player Tank is Destroyed!!!"));
 }
 
 // Get world location of linetrace through crosshair, true if it hits landscape
