@@ -54,6 +54,7 @@ void ATankPlayerController::AimTowardsCrosshair()
 void ATankPlayerController::OnTankDeath()
 {
 	UE_LOG(LogTemp, Warning, TEXT("Player Tank is Destroyed!!!"));
+	StartSpectatingOnly();
 }
 
 // Get world location of linetrace through crosshair, true if it hits landscape

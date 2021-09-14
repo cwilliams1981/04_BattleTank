@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "AIController.h"
+#include "Tank.h"
 #include "TankAIController.generated.h"
 
 class UTankAimingComponent;
@@ -18,6 +19,7 @@ class BATTLETANK_API ATankAIController : public AAIController
 	
 public:
 
+	//ATank* PossessedTank = nullptr;
 
 private:
 

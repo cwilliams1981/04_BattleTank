@@ -3,7 +3,7 @@
 #include "TankAIController.h"
 #include "GameFramework/Actor.h"
 #include "Engine/World.h"
-#include "Tank.h"
+#include "GameFramework/Pawn.h"
 #include "TankAimingComponent.h"
 
 
@@ -28,6 +28,10 @@ void ATankAIController::SetPawn(APawn* InPawn)
 void ATankAIController::OnTankDeath()
 {
 	UE_LOG(LogTemp, Warning, TEXT("Enemy Tank is Destroyed!!!"));
+	// PossessedTank->DetachFromControllerPendingDestroy();
+
+	if (!ensure(GetPawn())) { return; } // TODO remove if ok
+	GetPawn()->DetachFromControllerPendingDestroy();
 }
 
 void ATankAIController::Tick(float DeltaTime)

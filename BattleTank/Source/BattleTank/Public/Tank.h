@@ -26,6 +26,8 @@ public:
 	FTankDelegate TankDeathNotify;
 
 protected:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
 
 private:
 	// Sets default values for this pawn's properties
@@ -35,6 +37,6 @@ private:
 	int32 StartingHealth = 97;
 		
 	UPROPERTY(VisibleAnywhere, Category = "Health")
-	int32 CurrentHealth = StartingHealth;
+	int32 CurrentHealth;
 
 };
