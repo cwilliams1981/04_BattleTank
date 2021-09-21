@@ -23,6 +23,7 @@ UTankAimingComponent::UTankAimingComponent()
 
 void UTankAimingComponent::BeginPlay()
 {
+	Super::BeginPlay();
 	// Provides delay before first fire
 	LastFireTime = FPlatformTime::Seconds();
 }
