@@ -15,9 +15,7 @@ class BATTLETANK_API UTankTrack : public UStaticMeshComponent
 	GENERATED_BODY()
 
 protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
-	
+
 public:
 
 	// Sets a throttle between +1 and -1
@@ -31,12 +29,7 @@ public:
 private:
 	UTankTrack();
 
-	void ApplySidewaysForce();
+	TArray<class ASprungWheel*> GetWheels() const;
 
-	UFUNCTION()
-	void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit);
-
-	void DriveTrack();
-
-	float CurrentThrottle = 0;
+	void DriveTrack(float CurrentThrottle);
 };
